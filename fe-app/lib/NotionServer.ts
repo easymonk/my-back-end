@@ -53,72 +53,25 @@ export default class NotionService {
     // return NotionService.transformer(response);
     return response
   }
-  async create (): Promise<Question> {
+  async create (params: any): Promise<Question> {
     const response = await this.client.pages.create({
-      "cover": null,
-      "icon": null,
       "parent": {
         "type": "database_id",
-        "database_id": "74bcd939-36bd-4a29-91ad-0c167c717821"
+        "database_id": database
       },
       "properties": {
-        "desc": {
-          "type": "rich_text",
-          "rich_text": [
-            {
-              "type": "text",
-              "text": {
-                "content": "我是zheng",
-                "link": null
-              },
-              "annotations": {
-                "bold": false,
-                "italic": false,
-                "strikethrough": false,
-                "underline": false,
-                "code": false,
-                "color": "default"
-              },
-            }
-          ]
+        "id": {
+          "type": "number",
+          "number": params.id
         },
-        "prop": {
-          "type": "rich_text",
-          "rich_text": [
-            {
-              "type": "text",
-              "text": {
-                "content": "位置",
-                "link": null
-              },
-              "annotations": {
-                "bold": false,
-                "italic": false,
-                "strikethrough": false,
-                "underline": false,
-                "code": false,
-                "color": "default"
-              },
-            }
-          ]
-        },
-        "title": {
+        "tagName": {
           "type": "title",
           "title": [
             {
               "type": "text",
               "text": {
-                "content": "成都",
-                "link": null
-              },
-              "annotations": {
-                "bold": false,
-                "italic": false,
-                "strikethrough": false,
-                "underline": false,
-                "code": false,
-                "color": "default"
-              },
+                "content": params.tagName,
+              }
             }
           ]
         }
